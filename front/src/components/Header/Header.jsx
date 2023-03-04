@@ -1,6 +1,7 @@
 import React from "react";
-import { CarIcon } from "./Carlcon";
+import { CarIcon } from "../CarIcon/Carlcon";
 import { Link } from "react-router-dom";
+import '../Header/Header.css';
 
 export const Header = ({ counter }) => {
   return (
@@ -15,19 +16,7 @@ export const Header = ({ counter }) => {
           </Link>
         </ul>
       </nav>
-      <style jsx>{`
-        .header {
-          width: 100%;
-          height: 30px;
-          font-family: var(--font-display);
-          margin-bottom: 24px;
-          letter-spacing: 0.8px;
-        }
-        .header-nav-browser {
-          font-size: var(--header-font);
-          font-weight: var(--bold);
-        }
-      `}</style>
+     
     </header>
   );
 };

@@ -1,0 +1,21 @@
+.car-item {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 10px;
+    font-size: 2.6rem;
+    transition: all .4s ease;
+  }
+  .car-item:hover {
+      color: var(--hover-gray);
+      transform: scale(1.2);
+      cursor: pointer;
+  }
+  .car-item-number {
+    color: var(--black);
+    font-size: 2.4rem;
+    right: -2px;
+    top: -18px;
+    position: absolute;}
+  
