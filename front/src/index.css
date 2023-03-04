@@ -1,13 +1,121 @@
-body {
+:root {
+  /*colors*/
+  --black: #131410;
+  --gray: #d8d7db;
+  --white: #fff;
+  --hover-gray: #5e5c5b;
+  /*font*/
+  --font-display: "Playfair Display", serif;
+  --font-sans-serif: "Quicksand", sans-serif;
+  /*font-size*/
+  --header-font: 2.4rem;
+  --card-name: 1.8rem;
+  --card-brand: 1.6rem;
+  --card-price: 2.6rem;
+  --card-items: 1.7rem;
+  --button: 1.6rem;
+  /*font-weight*/
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+}
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+html {
+  background-color: var(--gray);
+  color: var(--black);
+  font-family: var(--font-sans-serif);
+  font-size: 62.5%;
+}
+::-webkit-scrollbar {
+  width: 14px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  border-radius: 10px;
+  border: 2px solid var(--white);
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.transition-button {
+  transition: all 0.8s ease-in-out;
+}
+.transition-button:hover {
+  color: var(--white);
+  background-color: var(--black);
+  cursor: pointer;
+}
+.scale {
+  transform: scale(0.99);
+  transition: transform 0.3s ease-in;
+}
+.scale:hover {
+  transform: scale(1.02);
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.flex-gap {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+}
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.padding {
+  padding: 12px;
+}
+.margin-bottom-8 {
+  margin-bottom: 8px;
+}
+.disable {
+  display: none;
+}
+.product-card-buttons {
+  width: 120px;
+  height: 40px;
+  margin-right: 12px;
+  outline: none;
+  border: 3px solid var(--black);
+  text-align: center;
+  background-color: transparent;
+  font-size: var(--button);
+  font-family: var(--font-display);
 }

@@ -1,63 +1,81 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Header } from "./components/Header";
+import { ProductsCards } from "./components/ProductCards";
+import { Loader } from "./components/Loader";
+import { ProductsDetail } from "./components/ProductsDetail";
+import ShoppingCarItem from "./components/ShoppingCarItem";
 
 const App = () => {
-  // -------------------------------------------------
-  // DO NOT USE THE CODE BELOW FROM LINES 8 TO 18. THIS IS
-  // HERE TO MAKE SURE THAT THE EXPRESS SERVER IS RUNNING
-  // CORRECTLY. DELETE CODE WHEN COMPLETING YOUR TEST.
-  const [response, setResponse] = useState('')
-
-  // call server to see if its running
-  useEffect(() => {
-    const getApiResponse = () => {
-      fetch('http://localhost:5000/')
-        .then((res) => res.text())
-        .then((res) => setResponse(res))
-        
-    }
-    getApiResponse()
-  }, [])
-  // -------------------------------------------------
-
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [carItem, setCarItem] = useState(0);
 
   useEffect(() => {
-    getApiProducts();
+    setTimeout(() => {
+      getApiProducts();
+    }, 1500);
   }, []);
 
   const getApiProducts = async () => {
     let response = await fetch("http://localhost:5000/api/products");
     let data = await response.json();
-    console.log(data);
     setProducts(data);
     setIsLoading(true);
   };
 
+  const addToCar = (id, data) => {
+    let product = data;
+    let array = [];
+    array.push(product);
+    setCartItems(array);
+  };
+
   return (
-    <section>
-      <h1> Prueba tecnica front Ecomsur 2021</h1>
-  
-      {!isLoading && (
-        <section>
-          <h1>Esta cargando los productos</h1>
-        </section>
-      )}
+    <Router>
+      <section>
+        <Header counter={carItem} />
 
-      {
-        isLoading && (
-          <section>
-            {products.map((item) => (
-              <h1 key={item._id}>{item.name}</h1>
-            ))}
-          </section>
-        )
+        <Switch>
+          <Route path="/products/:id">
+            <ProductsDetail />
+          </Route>
 
-        
-      }
-      <h5>{response}</h5>
-    </section>
+          <Route path="/car">
+            <section className="padding flex-wrap center">
+              {cartItems.map((item) => (
+                <ShoppingCarItem key={item._id} data={item} />
+              ))}
+            </section>
+          </Route>
+
+          <Route path="/">
+            {!isLoading && <Loader />}
+            {isLoading && (
+              <section className="flex-wrap padding center">
+                {products.map((item) => (
+                  <>
+                    <ProductsCards
+                      key={item._id}
+                      image={item.image}
+                      name={item.name}
+                      brand={item.brand}
+                      price={item.price}
+                      rating={item.rating}
+                      reviews={item.numReviews}
+                      disable={item.countInStock === 0 ? "disable" : ""}
+                      productId={item._id}
+                      add={() => addToCar(item._id, item)}
+                    />
+                  </>
+                ))}
+              </section>
+            )}
+          </Route>
+        </Switch>
+      </section>
+    </Router>
   );
 };
 
