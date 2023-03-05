@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Header } from "./components/Header/Header";
-import { ProductsCards } from "./components/ProductCards";
-import { Loader } from "./components/Loader";
-import { ProductsDetail } from "./components/ProductsDetail";
-import ShoppingCarItem from "./components/ShoppingCarItem";
+import { ProductsCards } from "./components/ProductsCards/ProductCards";
+import { Loader } from "./components/Loader/Loader";
+import { ProductsDetail } from "./components/ProductsDetail/ProductsDetail";
+import ShoppingCarItem from "./components/ShoppingCartItem/ShoppingCarItem";
+
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [carItem, setCarItem] = useState(0);
+  const [carItem] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {

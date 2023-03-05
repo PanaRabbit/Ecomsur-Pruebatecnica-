@@ -9,7 +9,7 @@ export const Header = ({ counter }) => {
       <nav className="header-nav">
         <ul className="flex-space-between header-nav-browser">
           <Link to="/">
-            <li>Tech Store</li>
+            <li>EcomsurTech</li>
           </Link>
           <Link to="/car">
             <CarIcon counter={`${counter}`} />

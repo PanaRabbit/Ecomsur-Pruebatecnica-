@@ -1,11 +1,11 @@
 :root {
   /*colors*/
   --black: #131410;
-  --gray: #d8d7db;
+  --Purple: #4a12f1;
   --white: #fff;
-  --hover-gray: #5e5c5b;
+  --hover-gray: #000000;
   /*font*/
-  --font-display: "Playfair Display", serif;
+  --font-display: "Poppins", serif;
   --font-sans-serif: "Quicksand", sans-serif;
   /*font-size*/
   --header-font: 2.4rem;
@@ -26,7 +26,7 @@
   box-sizing: border-box;
 }
 html {
-  background-color: var(--gray);
+  background-color: var(--Purple);
   color: var(--black);
   font-family: var(--font-sans-serif);
   font-size: 62.5%;
