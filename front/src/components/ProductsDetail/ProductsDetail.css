@@ -18,6 +18,8 @@
     width: 100%;
     height: auto;
     padding: 8px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
   }
   .product-detail-info__name {
     font-weight: var(--bold);
@@ -41,17 +43,18 @@
     color: var(--black);
     font-size: var(--card-items);
   }
-  .product-card-buttons {
-    width: 120px;
-    height: 40px;
-    margin-right: 12px;
-    outline: none;
-    border: 3px solid var(--black);
-    text-align: center;
-    background-color: transparent;
-    font-size: var(--button);
-    font-family: var(--font-display);
-  }
+ .product-card-buttons {
+  
+  width: 120px;
+  height: 40px;
+  margin-right: 12px;
+  outline: none;
+  border: 3px solid var(--black);
+  text-align: center;
+  background-color: transparent;
+  font-size: var(--button);
+  font-family: var(--font-display);
+}
   .margin {
     margin-right: 6px;
   }

@@ -26,6 +26,7 @@ const handleRemoveItem = () => {
     setCartItems(newCartItems);
   }
 }
+
 };
 
   return (

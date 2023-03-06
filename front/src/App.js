@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Header } from "./components/Header/Header";
-import { ProductsCards } from "./components/ProductsCards/ProductCards";
+import { ProductsCards} from "./components/ProductsCards/ProductCards";
 import { Loader } from "./components/Loader/Loader";
 import { ProductsDetail } from "./components/ProductsDetail/ProductsDetail";
 import ShoppingCarItem from "./components/ShoppingCartItem/ShoppingCarItem";
@@ -10,13 +10,25 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [carItem] = useState(0);
+  const [carItem, setCarItem] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
       getApiProducts();
     }, 1500);
   }, []);
+
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+    if (storedCartItems) {
+      setCartItems(storedCartItems);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    setCarItem(cartItems.length);
+  }, [cartItems]);
 
   const getApiProducts = async () => {
     let response = await fetch("http://localhost:5000/api/products");
