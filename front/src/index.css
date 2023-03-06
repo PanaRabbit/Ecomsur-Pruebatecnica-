@@ -31,19 +31,7 @@ html {
   font-family: var(--font-sans-serif);
   font-size: 62.5%;
 }
-::-webkit-scrollbar {
-  width: 14px;
-}
 
-::-webkit-scrollbar-track {
-  background: var(--gray);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--black);
-  border-radius: 10px;
-  border: 2px solid var(--white);
-}
 ul {
   list-style: none;
 }

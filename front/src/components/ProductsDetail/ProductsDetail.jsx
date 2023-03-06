@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import '../ProductsDetail/ProductsDetail.css'
 
 export const ProductsDetail = () => {
-  const [productDetail, setProductDetail] = useState([]);
+  const [productDetail, setProductDetail] = useState({});
   const { id } = useParams();
+
+  const getApiProducts = useCallback(async () => {
+    let response = await fetch(`http://localhost:5000/api/products/${id}`);
+    let data = await response.json();
+    if (response.ok) {
+      
+      setProductDetail(data);
+    } else {
+      console.log("Error de respuesta del servidor:", response.status);
+    }
+  }, [id])
 
   useEffect(() => {
     getApiProducts();
-  }, []);
+  }, [getApiProducts]);
 
-  const getApiProducts = async () => {
-    let response = await fetch(`http://localhost:5000/api/products/${id}`);
-    let data = await response.json();
-    setProductDetail(data);
-  };
+  
 
   return (
     <section className="product-detail padding">
+      
+      
       <figure className="product-detail-image">
         <img
           src={`http://localhost:5000${productDetail.image}`}
