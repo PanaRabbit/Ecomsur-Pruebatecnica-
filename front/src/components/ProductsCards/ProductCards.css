@@ -3,10 +3,11 @@
     height: 40px;
     margin-right: 12px;
     outline: none;
-    border: 3px solid var(--black);
+    border: 0px;
+    border-radius: 15px;
     text-align: center;
-    background-color: transparent;
-    font-size: var(--button);
+    background-color: purple;
+    font-size: var(--font-display);
     font-family: var(--font-display);
   }
   .product-card {

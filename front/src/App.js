@@ -6,7 +6,6 @@ import { Loader } from "./components/Loader/Loader";
 import { ProductsDetail } from "./components/ProductsDetail/ProductsDetail";
 import ShoppingCarItem from "./components/ShoppingCartItem/ShoppingCarItem";
 
-
 const App = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,9 +27,7 @@ const App = () => {
 
   const addToCar = (id, data) => {
     let product = data;
-    let array = [];
-    array.push(product);
-    setCartItems(array);
+    setCartItems([...cartItems, product]);
   };
 
   return (
@@ -45,8 +42,13 @@ const App = () => {
 
           <Route path="/car">
             <section className="padding flex-wrap center">
-              {cartItems.map((item) => (
-                <ShoppingCarItem key={item._id} data={item} />
+              {cartItems.map((item, index) => (
+                <ShoppingCarItem
+                  key={index}
+                  data={item}
+                  cartItems={cartItems}
+                  setCartItems={setCartItems}
+                />
               ))}
             </section>
           </Route>
@@ -56,20 +58,19 @@ const App = () => {
             {isLoading && (
               <section className="flex-wrap padding center">
                 {products.map((item) => (
-                  <>
-                    <ProductsCards
-                      key={item._id}
-                      image={item.image}
-                      name={item.name}
-                      brand={item.brand}
-                      price={item.price}
-                      rating={item.rating}
-                      reviews={item.numReviews}
-                      disable={item.countInStock === 0 ? "disable" : ""}
-                      productId={item._id}
-                      add={() => addToCar(item._id, item)}
-                    />
-                  </>
+                  <ProductsCards
+                    id={item._id}
+                    image={item.image}
+                    name={item.name}
+                    brand={item.brand}
+                    price={item.price}
+                    rating={item.rating}
+                    reviews={item.numReviews}
+                    disable={item.countInStock === 0 ? "disable" : ""}
+                    productId={item._id}
+                    key={item._id}
+                    add={() => addToCar(item._id, item)}
+                  />
                 ))}
               </section>
             )}

@@ -1,11 +1,11 @@
 header {
-  background-color: #ffffff; /* color de fondo */
-  color: #fff; /* color del texto */
-  padding: 20px; /* espacio alrededor del contenido */
+  background-color: #ffffff; 
+  color: #fff; 
+  padding: 20px; 
 }
   .header-nav-browser {
     font-size: var(--header-font);
     font-weight: var(--bold);
-    color:wheat;
+    color: #4a12f1;
     
   }

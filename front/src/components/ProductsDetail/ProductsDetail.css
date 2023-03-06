@@ -52,4 +52,11 @@
     font-size: var(--button);
     font-family: var(--font-display);
   }
-  
+  .margin {
+    margin-right: 6px;
+  }
+  @media (min-width: 900px) {
+    .product-detail {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
