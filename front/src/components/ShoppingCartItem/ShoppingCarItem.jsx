@@ -1,9 +1,10 @@
-import React ,{ useState } from "react";
+import React ,{ useState ,useEffect} from "react";
 import '../ShoppingCartItem/ShoppingCartItem.css';
 
 const ShoppingCarItem = ({ data , cartItems, setCartItems}) => {
   let { name, countInStock, price, image } = data;
   const [count, setCount] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(price);
 
 const increaseCount = () => {
 if (count < countInStock) {
@@ -29,6 +30,10 @@ const handleRemoveItem = () => {
 
 };
 
+useEffect(() => {
+  setTotalPrice(price * count);
+}, [count, price]);
+
   return (
     <section className="shopping-card-item padding scale">
       <figure className="shopping-card-item__image">
@@ -37,7 +42,7 @@ const handleRemoveItem = () => {
       <section className="shopping-card-item__info flex-column">
         <h2 className="shopping-card-item__name">{name}</h2>
         <p className="shopping-card-item__stock">{countInStock}</p>
-        <p className="shopping-card-item__price">$ {price}</p>
+        <p className="shopping-card-item__price">$ {totalPrice.toFixed(2)}</p>
       </section>
       <section className="shopping-card-item__buy">
         <button

@@ -39,7 +39,13 @@ const App = () => {
 
   const addToCar = (id, data) => {
     let product = data;
+    const existingProduct = cartItems.find(item => item._id === id);
+    if (existingProduct) {
+      
+      return;
+    } else {
     setCartItems([...cartItems, product]);
+    }
   };
 
   return (
